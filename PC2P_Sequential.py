@@ -95,10 +95,10 @@ def Find_CNP(G, mixed_label = False):
     G_temp = G.copy()
     edge_cut = []
     while len(G_components) != 0:
-        min_ratioN1 = 1000
-        min_ratioN2 = 1000
+        min_ratioN1 = float('inf')
+        min_ratioN2 = float('inf')
         componentOfG = G.subgraph(G_components[0]).copy() #we get the first component and find cnp
-        if len(componentOfG.nodes())==1 or len(componentOfG.nodes())==2 or len(componentOfG.nodes())==3:
+        if len(componentOfG.nodes()) <= 3:
             del G_components[0]
             continue
         for v in G_components[0]:
@@ -157,7 +157,7 @@ def Find_CNP(G, mixed_label = False):
                 """"we may find differnt cut_node_set 
                     if we have more than one choose a set with minimum weight"""
                 if (len(cut_node)>1): 
-                    minweight = 1000
+                    minweight = float('inf')
                     for n in cut_node:
                         """we calculate the score for each set seperately and then choose one with the minimum score"""
                         temp_N2 = induced_N2.copy()
