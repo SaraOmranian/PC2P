@@ -190,7 +190,7 @@ def Find_CNP(G, mixed_label = False):
     while len(G_components) != 0:
         componentOfG = G.subgraph(G_components[0]).copy() #we get the first component and find cnp
         if rounds==1:
-            if len(componentOfG.nodes())==1 or len(componentOfG.nodes())==2 or len(componentOfG.nodes())==3:
+            if len(componentOfG.nodes()) <= 3:
                 del G_components[0]
                 continue  
             nodes = list(componentOfG.nodes())
@@ -225,7 +225,7 @@ def Find_CNP(G, mixed_label = False):
             del nodes
             rounds += 1
         else:
-            if len(componentOfG.nodes())==1 or len(componentOfG.nodes())==2 or len(componentOfG.nodes())==3:
+            if len(componentOfG.nodes()) <= 3:
                 for i,r in enumerate(updated_results):
 #                    print(type(componentOfG.nodes()),"in result")
                     if ( list(r.values())[0][0] in list(componentOfG.nodes()) ):
