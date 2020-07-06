@@ -136,7 +136,7 @@ def CNP(G,v ,mixed_label = False):
             return
         elif len(cut_node)>1: #we may find differnt cut_node_set 
             #if we have more than one choose a set with minimum weight
-            minweight = 1000
+            minweight = float('inf')
             for n in cut_node:
                 #we calculate the score for each set seperately and then choose one with the minimum score
                 #node_cut = list(n) #at the end we choose the set with minimum weight
